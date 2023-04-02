@@ -5,9 +5,7 @@ import ItemsPrice from './ItemsPrice';
 import Nav from './Nav';
 
 
-
 // 데이터 불러오기
-
 function fetchAPI(url) {
   return fetch(url)
     .then(res => {
@@ -42,8 +40,8 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
   const [filterDatas, setFilterDatas] = useState([]);
-  const [traditionalData, setTraditionalData] = useState(null);
-  const [marketData, setMarketData] = useState(null);
+  const [traditionalData, setTraditionalData] = useState([]);
+  const [marketData, setMarketData] = useState([]);
 
 
   useEffect(() => {
@@ -75,36 +73,12 @@ function App() {
 
       });
       
-      setTraditionalData(filterData[0]);
-      setMarketData(filterData[1]);
+      setTraditionalData(...filterData[0]);
+      setMarketData(...filterData[1]);
       setFilterDatas(filterData);
     }
   }, [data]);
 
-  
-  // 데이터 카테고리 추출
-  function OrganizeCategorie(items, tag) {
-    let catagories
-
-    if (tag === 'A_NAME' && items) {
-      catagories = Array.from(new Set(items.map(item => item.M_TYPE_NAME)));
-    }
-    if (tag === 'M_GU_NAME' && items) {
-      catagories = Array.from(new Set(items.map(item => item.M_GU_NAME)));
-    }
-    if (tag === 'M_TYPE_NAME' && items) {
-      catagories = Array.from(new Set(items.map(item => item.M_TYPE_NAME)));
-    }
-
-
-    return catagories
-  }
-
-  if (data) {
-    console.log(traditionalData);
-    console.log(marketData)
-  }
-  
   
   return (
     <Router>
