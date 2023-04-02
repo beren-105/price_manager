@@ -20,12 +20,12 @@ export default function Nav() {
         </button>
         
         {/* 네비게이션 메뉴 */}
-        <nav className={`fixed w-80 h-full bg-gray-100 pt-16 border-r flex flex-col items-center ${!show && '-translate-x-80'}`}>
+        <nav className={`fixed w-72 h-full bg-gray-100 pt-16 border-r flex flex-col items-center ${!show && '-translate-x-80'}`}>
             <h1 className="text-3xl font-bold text-purple-500 mb-12">사이트 이름</h1>
 
             <div className="relative w-full flex justify-center">
                 
-                <div className="absolute top-0 left-[w-3/4] w-3/4 h-1/3 bg-purple-500 rounded-lg"></div>
+                <div className="absolute top-0 left-[w-4/5] w-4/5 h-1/3 bg-purple-500 rounded-lg"></div>
 
                 <ul className="text-xl z-10">
                     <li className={`flex items-center text-white`}>
