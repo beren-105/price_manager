@@ -35,5 +35,18 @@ function TitleAndBanner() {
 
 function ItemsList() {
 
-    
+    return(
+        <section>
+            <div>
+                <button>Filer</button>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+        </section>
+    )
 }
