@@ -1,8 +1,9 @@
 import { useState } from "react"
 import ItemsFillterBtn from "./ItemsFillterBtn";
+import ItemsLists from "./ItemsLists";
 
 export default function ItemsPrice() {
-    const [filterData, setFilterData] = useState();
+    const [filterData, setFilterData] = useState([]);
 
     return (
         <>
@@ -32,22 +33,5 @@ export default function ItemsPrice() {
             filterData = {filterData}
         />
         </>
-    )
-}
-
-
-function ItemsLists() {
-
-    return(
-        <section className="xl:ml-72">
-            
-            <div>
-                <ul>
-                    <li>
-
-                    </li>
-                </ul>
-            </div>
-        </section>
     )
 }

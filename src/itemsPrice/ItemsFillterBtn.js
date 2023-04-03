@@ -40,7 +40,7 @@ export default function ItemsFillterBtn({ setFilterData }) {
     }
 
     return (
-        <section className="xl:ml-72">
+        <section className="xl:ml-72 mb-10">
 
             {/* 필터 버튼 */}
             <div className="flex justify-end mb-2 max-w-6xl mx-auto xl:px-0 px-4">

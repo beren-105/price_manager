@@ -61,6 +61,7 @@ export function marketTypeDataFilter(items, tag) {
     return filterData
 }
 
+
 // 구이름과 마켓타입이 일치하는 데이터
 export function guNameMarketTypeIsEqual(guNameData, marketTypeData, guTag, markerTag) {
     let filterData = [];
