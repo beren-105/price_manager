@@ -41,9 +41,12 @@ export function ImportFetchData({ children }) {
             filterData.push(filter);
             
           });
-          setFilterDatas(filterData);
-          setTraditionalData(filterData[0]);
-          setMarketData(filterData[1]);
+
+          if (filterData.length !== 0) {
+            setFilterDatas([...filterData[0], ...filterData[1]])
+            setTraditionalData(filterData[0]);
+            setMarketData(filterData[1]);
+          }
         }
     }, [data]);
 
@@ -80,23 +83,5 @@ function fetchData() {
     const marketPromise = fetchAPI(`${uri}/ / /${datatDay}/대형마트`);
   
     return Promise.all([traditionalPromise, marketPromise]);
-}
-
-
-// 분류용 카테고리 만들기
-export function organizeCategorie(items, tag) {
-    let catagories
-
-    if (tag === 'A_NAME' && items) {
-        catagories = Array.from(new Set(items.map(item => item.M_TYPE_NAME)));
-    }
-    if (tag === 'M_GU_NAME' && items) {
-        catagories = Array.from(new Set(items.map(item => item.M_GU_NAME)));
-    }
-    if (tag === 'M_TYPE_NAME' && items) {
-        catagories = Array.from(new Set(items.map(item => item.M_TYPE_NAME)));
-    }
-
-    return catagories
 }
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faWonSign, faChartLine, faMapLocation, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faWonSign, faChartLine, faMapLocation, faXmark, faMagnifyingGlassChart } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from "react"
 
 export default function Nav() {
@@ -19,7 +19,13 @@ export default function Nav() {
                     color='#fff'
                 />
             </button>
-            <h1 className="text-lg font-bold text-gray-400 ml-2">사이트 이름</h1>
+            <h1 className="text-lg font-bold text-gray-400 ml-2">
+                <FontAwesomeIcon
+                    className="mr-2"
+                    icon={faMagnifyingGlassChart}
+                />
+                사이트 이름
+            </h1>
         </div>
         
         {/* 네비게이션 메뉴 */}
@@ -38,7 +44,13 @@ export default function Nav() {
                     color='#aaa'
                 />
             </button>
-            <h1 className="text-3xl font-bold text-purple-500 mb-12">사이트 이름</h1>
+            <h1 className="text-3xl font-bold text-purple-500 mb-12">
+                <FontAwesomeIcon
+                    className="mr-2"
+                    icon={faMagnifyingGlassChart}
+                />
+                사이트 이름
+            </h1>
 
             <div className="relative w-full flex justify-center">
                 

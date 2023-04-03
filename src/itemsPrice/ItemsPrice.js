@@ -1,12 +1,15 @@
+import { useState } from "react"
+import ItemsFillterBtn from "./ItemsFillterBtn";
 
 export default function ItemsPrice() {
+    const [filterData, setFilterData] = useState();
 
     return (
         <>
-        <section className="pt-20 xl:pt-16 xl:ml-72">
-            <h2 className="max-w-7xl mx-auto mb-8 text-2xl text-purple-500 px-4 2xl:px-0">품목별 물가</h2>
+        <section className="pt-20 xl:ml-72">
+            <h2 className="max-w-6xl mx-auto mb-8 text-2xl text-purple-500 px-4 xl:px-0">품목별 물가</h2>
 
-            <article className="relative max-w-7xl mx-auto mb-8 overflow-hidden 2xl:rounded-2xl">
+            <article className="relative max-w-6xl mx-auto mb-8 overflow-hidden xl:rounded-2xl">
                 <div className="absolute inset-0 flex items-center -z-10">
                     <div className="absolute inset-0 bg-black/[0.5] "></div>
                     <img className="object-cover w-full h-full" src="./image/items_price.jpg" alt="배너 이미지" />
@@ -22,27 +25,23 @@ export default function ItemsPrice() {
                 </div>
             </article>
         </section>
-        <ItemsFillterBtn />
-        <ItemsList />
+        <ItemsFillterBtn
+            filterData = {filterData}
+            setFilterData = {setFilterData}
+        />
+        <ItemsLists
+            filterData = {filterData}
+        />
         </>
     )
 }
 
-function ItemsFillterBtn() {
-    return (
-        <section>
-            
-        </section>
-    )
-}
 
-function ItemsList() {
+function ItemsLists() {
 
     return(
-        <section className="xl:pt-16 xl:ml-72">
-            <div className="max-w-7xl mx-auto 2xl:px-0">
-                <button>Filer</button>
-            </div>
+        <section className="xl:ml-72">
+            
             <div>
                 <ul>
                     <li>
