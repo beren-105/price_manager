@@ -26,7 +26,6 @@ export default function ItemsPrice() {
             </article>
         </section>
         <ItemsFillterBtn
-            filterData = {filterData}
             setFilterData = {setFilterData}
         />
         <ItemsLists

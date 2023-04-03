@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { DataContext } from "../utils/ImportFetchData";
-import { organizeCategorie } from "../utils/Util";
+import { guNameDataFilter, guNameMarketTypeIsEqual, marketTypeDataFilter, organizeCategorie } from "../utils/Util";
 
 
-export default function ItemsFillterBtn({ filterData, setFilterData }) {
+export default function ItemsFillterBtn({ setFilterData }) {
     const { filterDatas }  = useContext(DataContext);
 
     const [isShow, setIsShow] = useState(false);
@@ -19,13 +19,25 @@ export default function ItemsFillterBtn({ filterData, setFilterData }) {
     useEffect(() => {
         // 태그 업데이트
         if (filterDatas) {
-    
             setguNameTag(organizeCategorie(filterDatas, 'M_GU_NAME'));
-            setMarketNameTag(organizeCategorie(filterDatas, 'M_TYPE_NAME'))
-            console.log(guNameTag);
+            setMarketNameTag(organizeCategorie(filterDatas, 'M_TYPE_NAME'));
         }
 
     }, [filterDatas, isShow])
+
+    useEffect(() => {
+        dataFilltering();
+    }, [filterDatas, fillterTag])
+
+    // 필터링 버튼 클릭시
+    function dataFilltering() {
+        if (filterDatas) {
+            const guNameData =  guNameDataFilter(filterDatas, fillterTag.guName);
+            const marketTypeData = marketTypeDataFilter(filterDatas, fillterTag.marketName);
+            const equalData = guNameMarketTypeIsEqual(guNameData, marketTypeData, fillterTag.guName, fillterTag.marketName);
+            setFilterData(equalData);
+        }
+    }
 
     return (
         <section className="xl:ml-72">
