@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams } from "react-router-dom"
 import './App.css';
 import ItemsPrice from './ItemsPrice';
@@ -36,9 +36,12 @@ function fetchData() {
 
 function App() {
 
+  // 기본 데이터가져오기
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
+  
+  // 데이터 필터링
   const [filterDatas, setFilterDatas] = useState([]);
   const [traditionalData, setTraditionalData] = useState([]);
   const [marketData, setMarketData] = useState([]);
@@ -61,6 +64,10 @@ function App() {
 
 
   // 최신 데이터 필터링
+  // export const dataContext = createContext();
+
+  // export function dataContext()
+  
   useEffect(() => {
     if (data) {
       let filterData = [];
@@ -69,16 +76,18 @@ function App() {
         const datas = data.ListNecessariesPricesService.row;
         const updateDay = datas[0].P_DATE;
         const filter = datas.filter(data => data.P_DATE === updateDay);
-        filterData.push([filter]);
-
+        filterData.push(filter);
+        
       });
-      
-      setTraditionalData(...filterData[0]);
-      setMarketData(...filterData[1]);
       setFilterDatas(filterData);
+      setTraditionalData(filterData[0]);
+      setMarketData(filterData[1]);
     }
   }, [data]);
 
+  if (traditionalData) {
+    console.log(traditionalData[0])
+  }
   
   return (
     <Router>

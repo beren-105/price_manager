@@ -1,4 +1,5 @@
 
+// 분류용 카테고리 만들기
 export default function organizeCategorie(items, tag) {
     let catagories
 
@@ -14,3 +15,4 @@ export default function organizeCategorie(items, tag) {
 
     return catagories
 }
+
