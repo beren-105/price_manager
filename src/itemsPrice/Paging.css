@@ -1,0 +1,16 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination li {
+    padding: 4px;
+    width: 32px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.pagination li.active {
+    background-color: #A855F7;
+    color: #fff;
+}
