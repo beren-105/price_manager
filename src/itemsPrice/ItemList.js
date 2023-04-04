@@ -2,12 +2,12 @@
 export default function ItemLists({ list }) {
     return (
         <tr>
-            <td>{list.id}</td>
-            <td>{list.name}</td>
-            <td>{list.lowest}원</td>
-            <td>{list.highest}원</td>
-            <td>{list.medium}원</td>
-            <td></td>
+            <td className="py-2 border-x">{list.id}</td>
+            <td className="py-2 border-x">{list.name}</td>
+            <td className="py-2 border-x">{list.lowest}원</td>
+            <td className="py-2 border-x">{list.highest}원</td>
+            <td className="py-2 border-x">{list.medium}원</td>
+            <td className="py-2 border-x"></td>
         </tr>
     )
 }
