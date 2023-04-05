@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams } from "react-router-dom"
 import './App.css';
 import ItemsPrice from './itemsPrice/ItemsPrice';
+import LocalPrice from './localPrice/LocalPrice';
+import MarkerPrice from './markerPrice/MarkerPrice';
 import Nav from './Nav';
 import { DataContext, ImportFetchData } from './utils/ImportFetchData'
 
@@ -14,6 +16,8 @@ function App() {
         <Routes>
             <Route path='/' Component={Layout}>
               <Route index element={<ItemsPrice />} />
+              <Route path='localprice' element={<LocalPrice />}/>
+              <Route path='markerprice' element={<MarkerPrice />}/>
             </Route>
         </Routes>
       </ImportFetchData>

@@ -58,7 +58,10 @@ export default function Nav() {
 
                 <ul className="text-xl z-10">
                     <li className={`flex items-center text-white`}>
-                        <Link className="block py-2 my-1">
+                        <Link
+                            to="/"
+                            className="block py-2 my-1"
+                        >
                             <FontAwesomeIcon
                                 className="mr-2"
                                 icon={faWonSign}
@@ -67,7 +70,10 @@ export default function Nav() {
                         </Link>
                     </li>
                     <li className={`flex items-center text-gray-500`}>
-                        <Link className="block py-2 my-1">
+                        <Link
+                            to='/localprice'
+                            className="block py-2 my-1"
+                        >
                             <FontAwesomeIcon
                                 className="mr-2"
                                 icon={faMapLocation}
@@ -76,7 +82,10 @@ export default function Nav() {
                         </Link>
                     </li>
                     <li className={`flex items-center text-gray-500`}>
-                        <Link className="block py-2 my-1">
+                        <Link
+                            to='/markerprice'
+                            className="block py-2 my-1"
+                        >
                             <FontAwesomeIcon
                                 className="mr-2"
                                 icon={faChartLine}
