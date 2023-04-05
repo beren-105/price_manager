@@ -1,9 +1,13 @@
 import { useState } from "react"
 import ItemsFillterBtn from "./ItemsFillterBtn";
 import ItemsLists from "./ItemsLists";
+import ItemsModal from "./ItemsModal";
 
 export default function ItemsPrice() {
     const [filterData, setFilterData] = useState([]);
+    const [modalList, setModalList] = useState([]);
+    const [ismodalshow, setIsModalShow] = useState(false);
+    const [selestItemName, setSelestItemName] = useState(null);
 
     return (
         <>
@@ -27,11 +31,22 @@ export default function ItemsPrice() {
             </article>
         </section>
         <ItemsFillterBtn
-            setFilterData = {setFilterData}
+            setFilterData={setFilterData}
         />
         <ItemsLists
-            filterData = {filterData}
+            filterData={filterData}
+            setModalList={setModalList}
+            setIsModalShow={setIsModalShow}
+            selestItemName={selestItemName}
+            setSelestItemName={setSelestItemName}
         />
+        {ismodalshow &&
+            <ItemsModal
+                modalList={modalList}
+                selestItemName={selestItemName}
+                setIsModalShow={setIsModalShow}
+            />
+        }
         </>
     )
 }
