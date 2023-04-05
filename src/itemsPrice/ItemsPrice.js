@@ -9,6 +9,7 @@ export default function ItemsPrice() {
     const [ismodalshow, setIsModalShow] = useState(false);
     const [selestItemName, setSelestItemName] = useState(null);
 
+    console.log(modalList)
     return (
         <>
         <section className="pt-20 xl:ml-72">
@@ -25,7 +26,7 @@ export default function ItemsPrice() {
                         지금 물가는 어때?
                     </h3>
                     <p>
-                        매주 금요일 16가지 물품의 물가를 조사하여 만들어진 자료를 바탕으로 하고 있습니다.
+                        매주 금요일 물가를 조사하여 만들어진 자료를 바탕으로 하고 있습니다.
                     </p>
                 </div>
             </article>
@@ -43,7 +44,6 @@ export default function ItemsPrice() {
         {ismodalshow &&
             <ItemsModal
                 modalList={modalList}
-                selestItemName={selestItemName}
                 setIsModalShow={setIsModalShow}
             />
         }

@@ -1,7 +1,7 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-export default function ItemsModal({ modalList, selestItemName, setIsModalShow }) {
+export default function ItemsModal({ modalList, setIsModalShow }) {
 
     return (
         <div
@@ -19,7 +19,7 @@ export default function ItemsModal({ modalList, selestItemName, setIsModalShow }
                         color='#aaa'
                     />
                 </button>
-                <h2 className="px-4 py-8 text-xl font-bold text-purple-500">{selestItemName}</h2>
+                <h2 className="px-4 py-8 text-xl font-bold text-purple-500">{modalList.length > 0 && modalList[0].A_NAME}</h2>
                 <table className="w-full text-center">
                     <thead className="font-bold text-gray-400">
                         <tr>

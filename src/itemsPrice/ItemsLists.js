@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { ItemNameDataFilter, organizeCategorie } from "../utils/Util";
+import { dataListUp, ItemNameDataFilter, organizeCategorie } from "../utils/Util";
 import ItemList from "./ItemList";
 import Paging from "./Paging";
 
@@ -21,39 +21,10 @@ export default function ItemsLists({ filterData, selestItemName, setSelestItemNa
     // 데이터 리스트업: 최저가, 최고가, 평균가 계산
     useEffect(() => {    
         if (nameTag.length > 0) {
-            const lists = nameTag.map((name, index) => {
-                const items = ItemNameDataFilter(filterData, name);
-                const sort = items.sort((a,b) => parseInt(a.A_PRICE) - parseInt(b.A_PRICE));
-                let medium;
-
-                if (sort.length === 1) {
-                    medium = sort[0].A_PRICE;
-                } else {
-                    let mediumPrice = items.reduce((acc, item) => {
-                        return acc + parseInt(item.A_PRICE)
-                    }, 0);
-                    mediumPrice = Math.floor(mediumPrice / items.length);
-
-                    medium = mediumPrice
-                }
-
-                const itemList = {
-                    id: index + 1,
-                    name: sort[0].A_NAME,
-                    nameNumber: name,
-                    lowest: sort[0].A_PRICE,
-                    highest: sort[sort.length - 1].A_PRICE,
-                    medium: medium
-                }
-                
-                return itemList
-            })
-
-            setList([...lists])
+            setList(dataListUp(filterData, nameTag))
         }
-        
     }, [nameTag]);
-
+    
 
     // 현재 보여질 페이지의 데이터 리스트업
     useEffect(() => {
