@@ -39,7 +39,8 @@ export default function ItemsLists({ filterData, selestItemName, setSelestItemNa
 
                 const itemList = {
                     id: index + 1,
-                    name: name,
+                    name: sort[0].A_NAME,
+                    nameNumber: name,
                     lowest: sort[0].A_PRICE,
                     highest: sort[sort.length - 1].A_PRICE,
                     medium: medium
@@ -67,7 +68,7 @@ export default function ItemsLists({ filterData, selestItemName, setSelestItemNa
         setModalList(filterListSort)
     }, [selestItemName])
     
-
+    
     return(
         <section className="xl:ml-72">
             <div className="border rounded-xl mb-4 p-4 max-w-6xl mx-auto">
@@ -88,17 +89,16 @@ export default function ItemsLists({ filterData, selestItemName, setSelestItemNa
                             <th className="py-2">리스트보기</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {currentList.map((currentList, index) => (
-                            <ItemList
-                                key={index}
-                                index={index}
-                                currentList={currentList}
-                                setSelestItemName={setSelestItemName}
-                                setIsModalShow={setIsModalShow}
-                            />
-                        ))}
-                    </tbody>
+                <tbody>
+                    {currentList.map((currentList, index) => (
+                        <ItemList
+                            key={index}
+                            currentList={currentList}
+                            setSelestItemName={setSelestItemName}
+                            setIsModalShow={setIsModalShow}
+                        />
+                    ))}
+                </tbody>
                 </table>
             </>
             }

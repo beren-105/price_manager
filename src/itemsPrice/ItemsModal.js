@@ -46,7 +46,7 @@ export default function ItemsModal({ modalList, selestItemName, setIsModalShow }
 
 function ModalList({ list, index }) {
     return (
-        <tr className={`${index % 2 - 1 && 'bg-slate-50'}`}>
+        <tr className="odd:bg-slate-50">
             <td className="py-2 border-t">{index + 1}</td>
             <td className="py-2 border-t">{list.M_NAME}</td>
             <td className="py-2 border-t">{list.M_GU_NAME}</td>

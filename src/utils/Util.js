@@ -3,7 +3,7 @@ export function organizeCategorie(items, tag) {
     let catagories;
 
     if (tag === 'A_NAME' && items) {
-        catagories = Array.from(new Set(items.map(item => item.A_NAME)));
+        catagories = Array.from(new Set(items.map(item => item.A_SEQ)));
     }
     if (tag === 'M_GU_NAME' && items) {
         catagories = Array.from(new Set(items.map(item => item.M_GU_NAME)));
@@ -23,13 +23,9 @@ export function organizeCategorie(items, tag) {
 export function ItemNameDataFilter(items, tag) {
     let filterData;
 
-    if (tag === '전체') {
-        filterData = items;
-    } else {
-        const filtering = items.filter((item) => item.A_NAME === tag);
-        filterData = filtering;
-    }
-
+    const filtering = items.filter((item) => item.A_SEQ === tag);
+    filterData = filtering;
+    
     return filterData
 }
 

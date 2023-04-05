@@ -1,13 +1,13 @@
 import { faListUl } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function ItemLists({ index, currentList, setSelestItemName, setIsModalShow }) {
+export default function ItemLists({ currentList, setSelestItemName, setIsModalShow }) {
     function handleModal() {
         setIsModalShow(true);
-        setSelestItemName(currentList.name);
+        setSelestItemName(currentList.nameNumber);
     }
     return (
-        <tr className={`${index % 2 - 1 && 'bg-slate-50'}`}>
+        <tr className="odd:bg-slate-50">
             <td className="py-2 border-t">{currentList.id}</td>
             <td className="py-2 border-t">{currentList.name}</td>
             <td className="py-2 border-t">{currentList.lowest}원</td>
