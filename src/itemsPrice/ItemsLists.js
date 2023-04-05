@@ -53,11 +53,11 @@ export default function ItemsLists({ filterData }) {
     useEffect(() => {
         setCurrentList(list.slice((page-1) * showItems, (page-1) *showItems + showItems));
     }, [list, page])
-    
+    console.log(filterData)
 
     return(
         <section className="xl:ml-72">
-            <div className="border mb-4 py-4 max-w-6xl mx-auto xl:px-0 px-4">
+            <div className="border rounded-xl mb-4 p-4 max-w-6xl mx-auto">
             {filterData.length === 0 ?
                 <div>
                     <p>데이터가 없습니다.</p>
@@ -65,21 +65,21 @@ export default function ItemsLists({ filterData }) {
             :
             <>
                 <table className="w-full text-center">
-                    <thead className="font-bold text-gray-400">
+                    <thead className="font-bold text-gray-400 sticky top-12 bg-white">
                         <tr>
-                            <th className="py-2 border-x border-b">No.</th>
-                            <th className="py-2 border-x border-b">품목이름</th>
-                            <th className="py-2 border-x border-b">최저가</th>
-                            <th className="py-2 border-x border-b">최고가</th>
-                            <th className="py-2 border-x border-b">평균가</th>
-                            <th className="py-2 border-x border-b">기타</th>
+                            <th className="py-2">No.</th>
+                            <th className="py-2">품목이름</th>
+                            <th className="py-2">최저가</th>
+                            <th className="py-2">최고가</th>
+                            <th className="py-2">평균가</th>
+                            <th className="py-2">리스트보기</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {currentList.map((list, index) => (
+                        {currentList.map((currentList, index) => (
                             <ItemList
                                 key={index}
-                                list={list}
+                                currentList={currentList}
                             />
                         ))}
                     </tbody>

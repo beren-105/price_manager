@@ -37,7 +37,7 @@ export function ImportFetchData({ children }) {
           data.forEach(data => {
             const datas = data.ListNecessariesPricesService.row;
             const updateDay = datas[0].P_DATE;
-            const filter = datas.filter(data => data.P_DATE === updateDay);
+            const filter = datas.filter(data => data.P_DATE === updateDay && data.A_PRICE !== '0');
             filterData.push(filter);
             
           });

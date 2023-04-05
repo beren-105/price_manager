@@ -9,7 +9,7 @@ export default function Nav() {
     return (
         <>
         {/* 햄버거메뉴 */}
-        <div className="fixed flex items-center">
+        <div className="fixed flex items-center z-30 bg-white w-full xl:hidden">
             <button
                 className="p-3 bg-purple-500"
                 onClick={() => setShow(!show)}
