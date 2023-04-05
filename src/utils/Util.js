@@ -105,33 +105,40 @@ export function guNameMarketTypeIsEqual(guNameData, marketTypeData, guTag, marke
     return filterData
 }
 
+
+// 최저가, 최고가, 평균가 리스트업
 export function dataListUp(items, tags) {
     const lists = tags.map((tag, index) => {
         const item = ItemNameDataFilter(items, tag);
-        const sort = item.sort((a,b) => parseInt(a.A_PRICE) - parseInt(b.A_PRICE));
-        let medium;
-
-        if (sort.length === 1) {
-            medium = sort[0].A_PRICE;
-        } else {
-            let mediumPrice = sort.reduce((acc, item) => {
-                return acc + parseInt(item.A_PRICE)
-            }, 0);
-            mediumPrice = Math.floor(mediumPrice / sort.length);
-
-            medium = mediumPrice
-        }
-
-        const itemList = {
-            id: index + 1,
-            name: sort[0].A_NAME,
-            nameNumber: tag,
-            lowest: sort[0].A_PRICE,
-            highest: sort[sort.length - 1].A_PRICE,
-            medium: medium
-        }
         
-        return itemList
+        if (item.length > 0) {
+
+            const sort = item.sort((a,b) => parseInt(a.A_PRICE) - parseInt(b.A_PRICE));
+            let medium;
+
+            
+            if (sort.length === 1) {
+                medium = sort[0].A_PRICE;
+            } else {
+                let mediumPrice = sort.reduce((acc, item) => {
+                    return acc + parseInt(item.A_PRICE)
+                }, 0);
+                mediumPrice = Math.floor(mediumPrice / sort.length);
+    
+                medium = mediumPrice;
+            }
+            const itemList = {
+                id: index + 1,
+                name: sort[0].A_NAME,
+                nameNumber: tag,
+                marker: sort[0].M_TYPE_NAME,
+                lowest: Number(sort[0].A_PRICE),
+                highest: Number(sort[sort.length - 1].A_PRICE),
+                medium: Number(medium)
+            }
+            
+            return itemList
+        }
     })
 
     return [...lists]
