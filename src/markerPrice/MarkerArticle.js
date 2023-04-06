@@ -21,9 +21,11 @@ export default function MarkerArticle({ tradition, marker }) {
             평균가 : marker.medium
         }])
 
-        // 평균가가 어느쪽이 더 높은가
-        if (tradition.medium > marker.medium) {
+        // 평균가가 어느쪽이 더 낮은가
+        if (tradition.medium < marker.medium) {
             setHightTradition(true);
+        } else {
+            setHightTradition(false);
         }
     }, [tradition, marker])
     
@@ -31,7 +33,7 @@ export default function MarkerArticle({ tradition, marker }) {
     return (
         <article className='flex flex-col items-center border p-4 rounded-xl'>
             <div className='w-full'>
-                <h3 className='mt-2 mb-6 text-lg font-bold text-purple-500'>{tradition.name}</h3>
+                <h3 className='mt-2 mb-6 text-lg'>{tradition.name}</h3>
             </div>
             <div className='mb-4'>
                 <MarkerChart

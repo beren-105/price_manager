@@ -66,7 +66,7 @@ export default function MarkerPrice() {
 
         function traditionHighest() {
             tradition.map((tradition, i) => {
-                if (tradition.medium > marker[i].medium) {
+                if (tradition.medium < marker[i].medium) {
                     traditionScore = traditionScore + 1;
                 } else {
                     traditionScore = traditionScore + 0;
@@ -79,10 +79,10 @@ export default function MarkerPrice() {
 
         function markerHighest() {
             marker.map((marker, i) => {
-                if (tradition[i].medium < marker.medium) {
+                if (tradition[i].medium > marker.medium) {
                     markerScore = markerScore + 1;
                 } else {
-                    markerScore = markerScore - 1;
+                    markerScore = markerScore + 0;
                 }
             });
 
@@ -93,11 +93,12 @@ export default function MarkerPrice() {
             markerCount: markerCount,
             markerScore: markerHighest(),
             traditionCount: traditionCount,
-            traditionScore: traditionHighest()
+            traditionScore: traditionHighest(),
+            itemIsEpure : tradition.length
         })
     }, [marker, tradition])
 
-    console.log(highest)
+
     return (
         <>
         <section className="pt-20 xl:ml-72">
@@ -107,11 +108,9 @@ export default function MarkerPrice() {
             </div>
         </section>
         <section className="xl:ml-72">
-            <div className="max-w-6xl mx-auto mb-8 px-4 xl:px-0">
-                <MarkerTotalChart
-                    highest={highest}
-                />
-            </div>
+            <MarkerTotalChart
+                highest={highest}
+            />
         </section>
         <section className="xl:ml-72">
             <div className="flex flex-col flex-wrap justify-center gap-8 lg:flex-row max-w-6xl mx-auto mb-8 px-4 xl:px-0">
