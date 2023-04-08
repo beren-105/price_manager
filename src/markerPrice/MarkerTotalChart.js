@@ -25,7 +25,7 @@ export default function MarkerTotalChart({ highest }) {
         }
         ])
     }, [highest])
-    console.log(data)
+    
 
     const renderActiveShape = (props) => {
         const RADIAN = Math.PI / 180;

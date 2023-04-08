@@ -7,11 +7,9 @@ export function organizeCategorie(items, tag) {
     }
     if (tag === 'M_GU_NAME' && items) {
         catagories = Array.from(new Set(items.map(item => item.M_GU_NAME)));
-        catagories.unshift('전체');
     }
     if (tag === 'M_TYPE_NAME' && items) {
         catagories = Array.from(new Set(items.map(item => item.M_TYPE_NAME)));
-        catagories.unshift('전체');
     }
 
     return catagories

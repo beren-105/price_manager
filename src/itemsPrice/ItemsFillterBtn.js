@@ -19,8 +19,13 @@ export default function ItemsFillterBtn({ setFilterData }) {
     useEffect(() => {
         // 태그 업데이트
         if (filterDatas) {
-            setguNameTag(organizeCategorie(filterDatas, 'M_GU_NAME'));
-            setMarketNameTag(organizeCategorie(filterDatas, 'M_TYPE_NAME'));
+            let guName = organizeCategorie(filterDatas, 'M_GU_NAME');
+            let markerName = organizeCategorie(filterDatas, 'M_TYPE_NAME');
+            guName.unshift('전체');
+            markerName.unshift('전체');
+
+            setguNameTag(guName);
+            setMarketNameTag(markerName);
         }
 
     }, [filterDatas, isShow])

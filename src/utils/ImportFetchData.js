@@ -33,7 +33,7 @@ export function ImportFetchData({ children }) {
     useEffect(() => {
         if (data) {
           let filterData = [];
-    
+          
           data.forEach(data => {
             const datas = data.ListNecessariesPricesService.row;
             const updateDay = datas[0].P_DATE;
@@ -76,7 +76,7 @@ function fetchData() {
   
     // 날짜 계산
     const date = new Date();
-    const prevWeek = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 7);
+    const prevWeek = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate());
     const datatDay = prevWeek.getFullYear() + '-' + (('0' + (prevWeek.getMonth() + 1)).slice(-2));
   
     const traditionalPromise = fetchAPI(`${uri}/ / /${datatDay}/전통시장`);
