@@ -78,7 +78,7 @@ export default function Nav() {
                                 className="mr-2"
                                 icon={faMapLocation}
                             />
-                            자치구 비교하기
+                            우리구 물가보기
                         </Link>
                     </li>
                     <li className={`flex items-center text-gray-500`}>
