@@ -8,10 +8,13 @@ import {
     Tooltip,
     Legend
   } from "recharts";
+  import LocalList from "./LocalList";
 
 
-export default function LocalChart({ chartData, localData }) {
+export default function LocalChart({ chartData, listData }) {
     const [data, setData] = useState(null);
+
+
     useEffect(() => {
         // 데이터 정리
         setData([{
@@ -23,7 +26,9 @@ export default function LocalChart({ chartData, localData }) {
 
     }, [chartData])
 
-    console.log(chartData)
+    console.log(listData)
+
+
     return (
         <article className="flex flex-col items-center border p-4 rounded-xl">
             <div className='w-full'>
@@ -42,7 +47,6 @@ export default function LocalChart({ chartData, localData }) {
                 }}
                 >
                 <CartesianGrid strokeDasharray="3 3" />
-                {/* <XAxis dataKey="name" /> */}
                 <YAxis />
                 <Tooltip />
                 <Legend />
@@ -51,6 +55,12 @@ export default function LocalChart({ chartData, localData }) {
                 <Bar dataKey="최고가" fill="#f9a8d4" />
             </BarChart>
             </div>
+                {listData.map((data, index) => (
+                    <LocalList
+                        key={index}
+                        data={data}
+                    />
+                ))}
             <div className='text-xl'>
             </div>
         </article>

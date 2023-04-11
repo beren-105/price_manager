@@ -4,11 +4,24 @@ import LocalChart from "./LocalChart";
 
 export default function LocalCharts({ localData }) {
     const [chartData, setChartData] = useState([]);
+    const [listData, setListdata] = useState([]);
 
     useEffect(() => {
-        const list = organizeCategorie(localData, 'A_NAME');
-        setChartData(dataListUp(localData, list));
+        const chart = organizeCategorie(localData, 'A_NAME');
+        setChartData(dataListUp(localData, chart));
+
+        const list = localData.reduce((acc, cur) => {
+            const mGuName = cur.A_SEQ;
+            if (!acc[mGuName]) {
+              acc[mGuName] = [];
+            }
+            acc[mGuName].push(cur);
+            return acc;
+          }, {});
+          setListdata(list)
     }, [localData])
+
+    console.log(listData)
 
 
     return (
@@ -17,7 +30,7 @@ export default function LocalCharts({ localData }) {
                 <LocalChart
                     key={index}
                     chartData={data}
-                    localData={localData}
+                    listData={localData.filter((local) => local.A_SEQ === data.nameNumber)}
                 />
             ))}
         </div>

@@ -10,6 +10,7 @@ export default function LocalPrice() {
     const [options, setOptions] = useState([]);
     const [selectedOption, setSelectedOption] = useState(null);
     const [localData, setLocalData] = useState([]);
+    const [listData, setListData] = useState([]);
     
 
     useEffect(() => {
