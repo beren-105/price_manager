@@ -25,7 +25,7 @@ export default function LocalCharts({ localData }) {
 
 
     return (
-        <div className="flex flex-col flex-wrap justify-center gap-8 lg:flex-row">
+        <div className="flex flex-col lg:flex-wrap lg:flex-row">
             {chartData.map((data, index) => (
                 <LocalChart
                     key={index}
