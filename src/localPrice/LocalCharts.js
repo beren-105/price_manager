@@ -21,8 +21,6 @@ export default function LocalCharts({ localData }) {
           setListdata(list)
     }, [localData])
 
-    console.log(listData)
-
 
     return (
         <div className="flex flex-col lg:flex-wrap lg:flex-row">
