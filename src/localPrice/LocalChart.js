@@ -4,9 +4,6 @@ import LocalList from "./LocalList";
 
 export default function LocalChart({ chartData, listData }) {
 
-    console.log(listData)
-
-
     return (
         <article className="p-2 lg:basis-1/3">
             <div className="h-full flex flex-col items-center border p-4 rounded-xl">

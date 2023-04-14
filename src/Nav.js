@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faWonSign, faChartLine, faMapLocation, faXmark, faMagnifyingGlassChart } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faWonSign, faChartLine, faMapLocation, faXmark, faMagnifyingGlassChart, faHouse } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from "react"
 
 export default function Nav() {
     const [show, setShow] = useState(false);
+    const location = useLocation();
 
     return (
         <>
@@ -19,12 +20,17 @@ export default function Nav() {
                     color='#fff'
                 />
             </button>
-            <h1 className="text-lg font-bold text-gray-400 ml-2">
-                <FontAwesomeIcon
-                    className="mr-2"
-                    icon={faMagnifyingGlassChart}
-                />
-                사이트 이름
+            <h1 className="text-lg font-bold text-gray-400 ml-2 title-font">
+                    <Link
+                        to={'/'}
+                        onClick={() => setShow(!show)}
+                    >
+                    <FontAwesomeIcon
+                        className="mr-2"
+                        icon={faMagnifyingGlassChart}
+                    />
+                    물가매니저
+                </Link>
             </h1>
         </div>
         
@@ -33,7 +39,8 @@ export default function Nav() {
             className={`fixed z-50 inset-0 bg-black/[0.5] xl:hidden ${!show && 'hidden'}`}
             onClick={() => setShow(!show)}
         ></div>
-        <nav className={`fixed z-50 w-72 h-full bg-gray-100 pt-16 border-r flex flex-col items-center duration-200 xl:translate-x-0 ${!show && '-translate-x-80'}`}>
+
+        <nav className={`fixed z-50 w-72 h-full pt-16 flex flex-col items-center duration-200 xl:translate-x-0 bg-gray-100  border-r ${!show && '-translate-x-80'}`}>
             <button
                 className="absolute top-0 right-0 p-3 xl:hidden"
                 onClick={() => setShow(!show)}
@@ -44,23 +51,42 @@ export default function Nav() {
                     color='#aaa'
                 />
             </button>
-            <h1 className="text-3xl font-bold text-purple-500 mb-12">
-                <FontAwesomeIcon
-                    className="mr-2"
-                    icon={faMagnifyingGlassChart}
-                />
-                사이트 이름
+            <h1 className="text-3xl font-bold text-purple-500 mb-12 title-font">
+                <Link
+                    to="/"
+                    onClick={() => setShow(!show)}
+                >
+                    <FontAwesomeIcon
+                        className="mr-2"
+                        icon={faMagnifyingGlassChart}
+                    />
+                    물가매니저
+                </Link>
             </h1>
 
             <div className="relative w-full flex justify-center">
                 
-                <div className="absolute top-0 left-[w-4/5] w-4/5 h-1/3 bg-purple-500 rounded-lg"></div>
+                <div className={`absolute left-[w-4/5] w-4/5 h-1/4 bg-purple-500 rounded-lg duration-200 ${location.pathname === '/' && 'top-0'} ${location.pathname === '/items' && 'top-1/4'} ${location.pathname === '/local' && 'top-2/4'} ${location.pathname === '/marker' && 'top-3/4'}`}></div>
 
                 <ul className="text-xl z-10">
-                    <li className={`flex items-center text-white`}>
+                    <li className={`flex items-center ${location.pathname === '/' ? ' text-white' : 'text-gray-500'}`}>
                         <Link
                             to="/"
                             className="block py-2 my-1"
+                            onClick={() => setShow(!show)}
+                        >
+                            <FontAwesomeIcon
+                                className="mr-2"
+                                icon={faHouse}
+                            />
+                            메인
+                        </Link>
+                    </li>
+                    <li className={`flex items-center ${location.pathname === '/items' ? ' text-white' : 'text-gray-500'}`}>
+                        <Link
+                            to="/items"
+                            className="block py-2 my-1"
+                            onClick={() => setShow(!show)}
                         >
                             <FontAwesomeIcon
                                 className="mr-2"
@@ -69,10 +95,11 @@ export default function Nav() {
                             품목별 물가
                         </Link>
                     </li>
-                    <li className={`flex items-center text-gray-500`}>
+                    <li className={`flex items-center ${location.pathname === '/local' ? ' text-white' : 'text-gray-500'}`}>
                         <Link
-                            to='/localprice'
+                            to='/local'
                             className="block py-2 my-1"
+                            onClick={() => setShow(!show)}
                         >
                             <FontAwesomeIcon
                                 className="mr-2"
@@ -81,10 +108,11 @@ export default function Nav() {
                             우리구 물가보기
                         </Link>
                     </li>
-                    <li className={`flex items-center text-gray-500`}>
+                    <li className={`flex items-center ${location.pathname === '/marker' ? ' text-white' : 'text-gray-500'}`}>
                         <Link
-                            to='/markerprice'
+                            to='/marker'
                             className="block py-2 my-1"
+                            onClick={() => setShow(!show)}
                         >
                             <FontAwesomeIcon
                                 className="mr-2"
